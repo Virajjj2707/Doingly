@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {collection, addDoc, serverTimestamp, updateDoc, doc} from 'firebase/firestore'
 import { firestore } from './firebase'
 import { toast } from 'react-hot-toast'
-import logo from "../src/MessyDoodle.png"
+
 
 function Form({isUpdate, docId, setOpen}) {
     const [input, setInput] = useState('')
@@ -35,7 +35,7 @@ function Form({isUpdate, docId, setOpen}) {
         <button disabled={!input} type='submit' className='py-2 px-4 text-center w-full bg-blue-500 hover:bg-blue-600 transition text-white font-medium rounded-lg disabled:bg-gray-500' onClick={(event) => handleSubmit(event)}>Submit</button>
     </form>
     <div>
-    <img src={ logo } alt="firespot" className="h-52 w-52 float-right mr-5 my-56"/>
+    
     </div>
     </>
   ) 
