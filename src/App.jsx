@@ -1,29 +1,32 @@
-import Header from './Header'
-import Form from "./Form"
-import { Toaster } from "react-hot-toast"
-import TaskList from './TaskList';
+import Cooper from "../src/cooper.png"
+import Dologo from "../src/LOGOV3.png"
 import  "./App.css"
+import { Link } from "react-router-dom";
 
 function App() {
   return (
-    <>
-    
-    
-    <Toaster position="top-center" reverseOrder={false}/>
-    <main >
-    <Header />
-   
-    <Form />
-   
-    <TaskList />
-  
-   
-    </main>
-  
-    
-   
+    <main>
+      <div className=" min-h-screen bg-[#CFA758]">
+       
+       <div className="absolute bg-[#C5CDDF] w-7/12 h-4/6 top-40 left-80">
+      
+           <div className="absolute w-2/4 left-2/4 bg-[#BB7769] h-full">
+           <img src={Cooper} alt="hey-icon" id="bz-icon" className="w-full object-contain scale-125 absolute -top-7"/>
+           </div>
+           <img src={Dologo} alt="do-icon" className="w-38 h-32 mx-4"/>
+           <div className="mt-10">
+           <p className="mx-20 text-2xl">Welcome To Doingly!</p>
+           <p className="mx-20 text-2xl">A Platform For Your</p>
+           <p className="mx-20 text-2xl">Daily Chores.</p>
+           
+           </div>
+          <Link to="/signup"> <button className="border border-1 border-black my-28 ml-16 w-36 h-10 bg-black text-white rounded-lg">Signup</button></Link>
+          <Link to="/login"> <button  className="border border-1 border-black my-28 ml-8 w-36 h-10 bg-black text-white rounded-lg">Login</button></Link>
+          <h3 className="font-sans-serif">Created by-Viraj Vadhane</h3>
 
-    </>
+       </div>
+   </div> 
+    </main>
   );
 }
 

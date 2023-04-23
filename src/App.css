@@ -1,8 +1,6 @@
-body {
 
+#bz-icon {
+width: 900px;
+height: 550px;
 
-    background: rgb(8,216,255);
-    background: linear-gradient(90deg, rgba(8,216,255,1) 0%, rgba(84,120,158,1) 34%);
-    
 }
-
