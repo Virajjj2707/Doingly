@@ -3,14 +3,17 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import SignUp from './SignUp';
 import Login from './Login'
+import Dashboard from './Dashboard';
 
 const router = createBrowserRouter([
   { path: '/login', element: <Login /> },
   { path: '/signup', element: <SignUp /> },
-  { path: '/', element: <App /> }
+  { path: '/app', element: <App /> },
+  { path: '/dashboard', element: <Dashboard /> },
+  { path: '/', element: <Navigate to={'/app'} /> }
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import {collection, addDoc, serverTimestamp, updateDoc, doc} from 'firebase/firestore'
 import { firestore } from './firebase'
 import { toast } from 'react-hot-toast'
+import { memo } from 'react'
 
 
 function Form({isUpdate, docId, setOpen}) {
@@ -41,4 +42,4 @@ function Form({isUpdate, docId, setOpen}) {
   ) 
 }
 
-export default Form
+export default memo(Form)

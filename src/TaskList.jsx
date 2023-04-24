@@ -6,14 +6,13 @@ import ReactModal from 'react-modal'
 import Form from "./Form"
 import Doodle from "../src/MessyDoodle.png"
 import Bookicon from "../src/ReadingSideDoodle.png"
+import {memo} from 'react'
 
 ReactModal.setAppElement('#modal')
 
 function TaskList() {
     const [tasks, setTasks] = useState([])
     const [open, setOpen] = useState('')
-
-    console.log(tasks)
 
     useEffect(() => {
         const dbQuery = query(collection(firestore, 'works'), orderBy('timestamp', 'desc'))
@@ -29,8 +28,7 @@ function TaskList() {
         // fetchData()
         return () => unsubscribe()
     }, [])
-
-    console.log(open)
+    
   return (
     <>
     <ReactModal isOpen={!!open} onRequestClose={() => setOpen('')}  className={'w-3/5 h-fit p-2 rounded-lg space-y-2 outline-none shadow-md bg-slate-300 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'} >
@@ -59,4 +57,4 @@ function TaskList() {
   )
 }
 
-export default TaskList
+export default memo(TaskList)

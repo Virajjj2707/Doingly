@@ -1,7 +1,28 @@
-import Logo from "../src/219986.png"
+import { useEffect, useState } from "react"
 import Doingly from "../src/todoLOGO2.png"
+import { onAuthStateChanged, signOut } from "firebase/auth"
+import { auth } from "./firebase"
+import { memo } from "react"
+import { useNavigate } from "react-router-dom"
 
 function Header() {
+  const [user, setUser] = useState()
+  const navigate = useNavigate()
+
+  const handleSignOut = () => {
+    signOut(auth).then(() => {
+      navigate('/app')
+    }).catch((reason) => alert(reason))
+  }
+
+    useEffect(() => {
+      const unsubscribe = onAuthStateChanged(auth, (snapshot) => {
+        setUser(snapshot?.toJSON())
+      })
+
+      return () => unsubscribe()
+    }, [])
+
     return (
       <nav class="flex items-center justify-between flex-wrap bg-slate-900 p-6">
       <div class="flex items-center flex-shrink-0 text-white mr-6">
@@ -25,12 +46,12 @@ function Header() {
           
           </a>
         </div>
-        <div>
-          <img src={Logo} alt="icon" className="inline-block text-sm h-10 w-10 leading-none hover:cursor-pointer mt-4 lg:mt-0"/>
+        <div className="text-white">
+          {user ? <button onClick={() => handleSignOut()} title="Sign Out">{user.email}</button> : 'Guest'}
         </div>
       </div>
     </nav>
     )
   }
 
-  export default Header
+  export default memo(Header)
